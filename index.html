@@ -1,0 +1,450 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Monitorización de variables</title>
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">-->
+<link href="css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/stylus.css">
+<link rel="stylesheet" href="css/bootstrap-toggle.min.css">
+<link rel="stylesheet" href="css/bootstrap-slider.css">
+    <style>
+
+    </style>
+</head>
+<body>
+<header class="intro">
+        <div class="intro-body">
+            <div class="container-fluid">
+                <!--Barra superior de navegación-->
+                <div class="col-lg-2 col-md-2 col-sm-3" ><!--<div class="col-md-7 col-sm-6">-->
+                        <p class="pull-left" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:25px;">
+                              <a id="btnShowConfig" class="btn btn-success" href="#" title="Configuration"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
+                              <a id="btnFullScreen" class="btn btn-success" href="#" title="Fullscreen"><i class="fa fa-arrows-alt fa-lg" aria-hidden="true"></i></a>
+                        </p>                    
+                    <!--
+                    <img class="visible-lg" src="logo-saci.jpg" style="float:left;"/>
+                    <img class="visible-md" src="logo-saci.jpg" style="float:left;"/>
+                    <img class="hidden-lg hidden-md" src="logo-saci.jpg" style="float:left; padding:5px;"/>
+                    -->
+                </div>
+                <!--Iconos redes sociales-->
+                <div class="col-lg-10 col-md-10 col-sm-9" >
+                  <div class="col-md-9 col-sm-7 hidden-xs">
+                        <h1 class="visible-lg" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:25px;">
+                            <!--Monitorización de variables-->
+                        </h1>
+                        <h1 class="visible-md" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:30px;">
+                           <!--Monitorización de variables-->
+                        </h1> 
+                  </div>
+                </div>
+            </div>
+        </div>
+</header>
+
+
+<div class="container-fluid">
+    
+    <!--Indicadores E-winner-->
+    <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:1px;">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div col-centered">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png" style="margin-left:250px;"/></div>
+                <div class="panel-body col-centered" style="padding:0px; margin-left:80px;">
+                    <canvas id="gauge1" style=""></canvas>
+                    <canvas id="gauge2" style=""></canvas>
+                    <br/>
+                    <canvas id="gauge3" style="margin-left:20px;"></canvas>
+                    <canvas id="gauge4" style="margin-left:50px;"></canvas>
+                </div>
+        </div>
+    </div>
+
+    <!--Diferenciales Winner XXX-->
+    <div id="panelDif" class="col-sm-5 col-md-5 col-lg-5" style="margin-top:1px; display:none;">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427; min-height:75px; padding-top:10px;">
+                <!--<img class="img-responsive" src="img/e-winner-logo.png"/>-->
+                <p class="infoMachine text-center">
+                    <span id="nomMachineD">winner 150</span>
+                </p>
+            </div>
+                <div class="panel-body" style="padding:0px; margin-left:80px; ">
+                    <canvas id="gauge-sav1" style=""></canvas>
+                    <canvas id="gauge-sav2" style=""></canvas>
+                    <br/>
+                    <canvas id="gauge-sav3" style="margin-left:20px;"></canvas>
+                    <canvas id="gauge-sav4" style="margin-left:50px;"></canvas>
+                </div>
+        </div>
+    </div>
+
+     <!--Absolutos Winner XXX-->
+    <div id="panelAbs" class="col-sm-5 col-md-5 col-lg-5" style="margin-top:1px;">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427; min-height:75px; padding-top:10px;">
+                <!--<img class="img-responsive" src="img/e-winner-logo.png"/>-->
+                <p class="infoMachine text-center">
+                    <span id="nomMachineA">winner 150</span>
+                </p>
+            </div>
+                <div class="panel-body col-centered" style="padding:0px; margin-left:80px;">
+                    <canvas id="gaugeWin1" style=""></canvas>
+                    <canvas id="gaugeWin2" style=""></canvas>
+                    <br/>
+                    <canvas id="gaugeWin3" style="margin-left:20px;"></canvas>
+                    <canvas id="gaugeWin4" style="margin-left:50px;"></canvas>
+                </div>
+        </div>
+    </div>   
+    
+    
+    
+    
+    
+    <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:-40px;">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div col-centered">
+                <div class="panel-body col-centered" style="padding:0px; margin-left:80px;">
+                    <p class="infoEnergy text-center">
+                        <span id="paramEnergy1" style="font-size:20px;">PE1</span>
+                        <span style="font-size:20px;"> x </span>
+                        <span id="paramWorkHours" style="font-size:20px;">10</span>
+                        <span style="font-size:20px;"> = </span>
+                            <strong><span id="numEnergy1" style="font-size:35px; font-weight:bolder;">E1</span></strong>
+                        <span style="font-size:20px;"> kWh/DAY</span>
+                    </p>
+                    <p class="infoEnergy text-center">
+                        <strong><span id="numEnergy2" style="font-size:35px; font-weight:bolder;">E2</span></strong>
+                        <span style="font-size:20px;"> kWh/YEAR</span>
+                    </p>
+                    <!--
+                     <p class="infoReference text-center">
+                        Power: <span id="ref1">0</span>
+                     </p>       
+                    -->
+                </div>
+        </div>
+    </div>    
+
+    <div class="col-sm-5 col-md-5 col-lg-5" style="margin-top:-40px;">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div">
+                <div class="panel-body" style="padding:0px; margin-left:80px;">
+                    <p class="infoEnergy text-center">
+                        <span id="paramEnergy3" style="font-size:20px;">1.5</span>
+                        <span style="font-size:20px;"> x </span>
+                        <span id="paramTimeFilter" style="font-size:20px;">4</span>
+                        <span style="font-size:20px;"> = </span>
+                            <strong><span id="numEnergy3" style="font-size:35px; font-weight:bolder;">E3</span></strong>
+                        <span style="font-size:20px;"> kWh/DAY</span>
+                    </p>
+                    <p class="infoEnergy text-center">
+                        <strong><span id="numEnergy4" style="font-size:35px; font-weight:bolder;">E4</span></strong>
+                        <span style="font-size:20px;"> kWh/YEAR</span>
+                    </p>
+                </div>
+        </div>
+    </div>
+
+
+<!--Energy saving-->    
+    <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-3 col-md-offset-3 col-lg-offset-3" style="margin-top:-40px; margin-left:550px; ">
+        <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div" style="background-color:#272935;">
+                <div class="panel-body" style="padding:0px; margin-left:80px;  color:#b6c427;">
+                    <p class="infoEnergy text-center">
+                        <strong><span style="font-size:35px; color:#ffffff; font-weight:bolder;">ENERGY SAVINGS = </span></strong>
+                        <strong><span id="numEnergy5" style="font-size:35px; font-weight:bolder;">E4</span></strong>
+                        <strong><span style="font-size:35px; font-weight:bolder;"> % </span></strong>
+                    </p>
+<!--
+                    <p class="infoEnergy text-center">
+                        <span id="nomMachine3">winner 150</span><span id="nomMachine3">winner 150</span>
+
+                    </p>
+                     <p class="infoReference text-center">
+                        Pressure: <span id="ref3">0</span>
+                         Speed: <span id="ref4">0</span>
+                     </p> 
+-->
+                </div>
+        </div>
+    </div>    
+<!--    
+    <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" style="margin-top:40px; margin-left:200px;">
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
+                <div class="panel-body" style="padding:0px; margin:0px;">
+                    <canvas id="gauge1" style="background-color:#adc706; width:100%;"></canvas>
+                </div>
+        </div>
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 xwinner-div">
+
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;">
+                <h2 class="text-center" style="font-family: Futura,Trebuchet MS,Arial,sans-serif; padding:10px; margin:0px;">Diferencial</h2>
+            </div>
+            <div class="panel-body" style="background-color:#adc706; padding:10 0 0 0 px; margin:0px;">
+                    <canvas id="gauge-sav1" style="background-color:#adc706; margin-left:5px; width:90%;"></canvas>
+            </div>
+            <div class="panel-footer" style="background-color:#adc706;">
+      
+            </div>
+        </div>
+    </div>
+-->
+<!--    
+	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:40px;">
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
+                <div class="panel-body" style="padding:0px; margin:0px;">
+                    <canvas id="gauge2" style="background-color:#adc706; width:100%;"></canvas>
+                </div>
+        </div>
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 xwinner-div">
+
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;">
+                <h2 class="text-center" style="font-family: Futura,Trebuchet MS,Arial,sans-serif; padding:10px; margin:0px;">Diferencial</h2>
+            </div>
+            <div class="panel-body" style="background-color:#adc706; padding:10 0 0 0 px; margin:0px;">
+                    <canvas id="gauge-sav2" style="background-color:#adc706; margin-left:5px; width:90%;"></canvas>
+            </div>
+            <div class="panel-footer" style="background-color:#adc706;">
+          
+            </div>
+        </div>
+    </div>
+-->
+    
+<!--    
+	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" style="margin-top:30px; margin-left:200px;">
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
+                <div class="panel-body" style="background-color:#adc706; padding:0px;">
+                    <canvas id="gauge3" style="background-color:#adc706; width:75%; margin-left:30px;"></canvas>
+                </div>
+        </div>
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 xwinner-div">
+
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;">
+                <h2 class="text-center" style="font-family: Futura,Trebuchet MS,Arial,sans-serif; padding:10px; margin:0px;">Diferencial</h2>
+            </div>
+            <div class="panel-body" style="background-color:#adc706; padding:10 0 0 0 px; margin:0px;">
+                    <canvas id="gauge-sav3" style="background-color:#adc706; margin-left:25px; width:75%;"></canvas>
+            </div>
+            <div class="panel-footer" style="background-color:#adc706;">
+            
+            </div>
+        </div>
+    </div>
+-->    
+<!--    
+	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:30px;">
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
+                <div class="panel-body" style="background-color:#adc706; padding:0px; margin:0px;">
+                    <canvas id="gauge4" style="background-color:#adc706; width:75%; margin-left:30px;"></canvas>
+                </div>
+        </div>
+        <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 xwinner-div">
+
+            <div class="panel-header" style="background-color:#272935; color:#b6c427;">
+                <h2 class="text-center" style="font-family: Futura,Trebuchet MS,Arial,sans-serif; padding:10px; margin:0px;">Diferencial</h2>
+            </div>
+            <div class="panel-body" style="background-color:#adc706; padding:10 0 0 0 px; margin:0px;">
+                    <canvas id="gauge-sav4" style="background-color:#adc706; margin-left:25px; width:75%;"></canvas>
+            </div>
+            <div class="panel-footer" style="background-color:#adc706;">
+                    <p class="infoMachine text-center">
+                        
+                    </p>
+                     <p class="infoReference text-center">
+                        
+                     </p>             
+            </div>
+        </div>
+    </div>
+-->    
+
+
+
+
+
+</div>
+<footer>
+    <span id="showOn" class="label label-primary" style="display:none;">Monitorización en marcha</span>
+    <span id="showOff" class="label label-danger" style="display:none;">Monitorización detenida</span>
+<!--https://github.com/Mikhus/canvas-gauges/wiki/Gauge-API-->
+<!--https://canvas-gauges.com/documentation/user-guide/-->
+</footer>
+
+    
+
+<div id="modalConfiguration" class="modal fade" role="dialog" >
+    <div class="modal-dialog"><div class="modal-content">
+ 	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3><i class="fa fa-cog"></i> Configuration</h3>
+	</div>
+    <div class="modal-body">
+        <div class="row">
+            <ul  class="nav nav-pills" style="margin-left:15px;">
+                <li class="active">
+                    <a  href="#1a" class="btn-primary" data-toggle="tab">Operation</a>
+                </li>
+                <li><a href="#2a" data-toggle="tab">Settings</a>
+                </li>
+            </ul>            
+<hr/>            
+            <div class="tab-content clearfix">
+                <div class="tab-pane active col-md-12" id="1a">
+<!--
+    Se monitoriza una serie de valores aleatorios para comprobar el funcionamiento de los controles
+    En la función gauges_auto_on() del fichero config-gauges.js podemos configurar la función que genera los valores aleatorios
+-->
+                    <h3><small>Random values</small></h3>
+                    <a id="btnGaugesAutoON" class="btn btn-success" onclick="gauges_auto_on();"><i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Start Gauges"></i> Start</a>
+                    <a id="btnGaugesAutoOFF" class="btn btn-success" onclick="gauges_auto_off();"><i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Stop Gauges"></i> Stop</a>
+                    <a id="btnGaugesReset" class="btn btn-success" onclick="gauges_reset();"><i class="fa fa-refresh fa-lg" aria-hidden="true" title="Reset Gauges"></i> Reset</a>
+                    <hr/>
+<!--
+    Se monitoriza un fichero CSV que se puede generar previamente con un excel que hay en la carpeta Assets.
+    Los valores del CSV se monitorizan y al final del fichero, la monitorización se para o se repite de cero, en función de la opción seleccionado por el usuario
+-->
+                    <!--
+                    <h3><small>Monitor CSV static file </small></h3>
+                    <input id="fileBrowser" type="file" class="filestyle" data-buttonText="Selecciona LOG" data-buttonName="btn-success" data-placeholder="Ningún fichero seleccionado">
+                    <a id="btnStartProcessFile" class="btn btn-success" ><i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> Procesar</a>
+                    <a id="btnStopProcessFile" class="btn btn-success" ><i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Reset Gauges"></i> Detener</a>
+                    <input checked data-toggle="toggle" type="checkbox" data-on="Repetir" data-off="No repetir" data-width="100" id="optRepeat">
+                    <hr/>
+                    -->
+                    
+                    <h3><small>Monitor LOG file </small></h3>
+                    <!--
+                        Se monitoriza un fichero llamado <strong>logfile.txt</strong> que se encuentra en la misma ruta que el fichero <strong>index.html</strong>. Cuando se arranca la monitorización por primera vez comienza leyendo datos desde la primera línea. Una vez termina los datos en memoria, lo vuelve a leer y si hay más datos la monitorización continúa desde la última línea procesada. Si no hubiera datos nuevos se volverán a intentar leer en busca de nuevos datos cada 5 segundos.
+                    -->
+                    <a id="btnStartProcessFileContinuo" class="btn btn-success" ><i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> Start monitor</a>
+                    <a id="btnSopProcessFileContinuo" class="btn btn-success" ><i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> Stop monitor</a>
+                    <input checked data-toggle="toggle" type="checkbox" data-on="Multiline LOG" data-off="Single line LOG" data-width="140" id="optTipoFileLOG">
+                    <input checked data-toggle="toggle" type="checkbox" data-off="Show winner values" data-on="Show winner savings" data-width="160" id="optShowSaveAndValues">
+                </div>
+                <div class="tab-pane col-md-12" id="2a">
+                    <h3><small> Pool volumen m<sup>3</sup></small></h3>
+                    <input id="poolvol" name="poolvol" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="40" data-slider-max="150" data-slider-step="1" data-slider-value="40"/><span id="poolvolval" style="margin-left:20px;">40 m3</span>
+                    <h3><small>Filtration time</small></h3>
+                    <input id="timefilter" name="timefilter" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="4" data-slider-max="6" data-slider-step="0.5" data-slider-step="0.1" data-slider-value="4"/><span id="timefilterval" style="margin-left:20px;">4 h</span>
+                    <h3><small>Daily filtration hours</small></h3>
+                    <input id="timeWorkDay" name="timeWorkDay" type="text" class="form-control" style="left: 0%; width: 75%;" value="10" data-slider-min="1" data-slider-max="24" data-slider-step="1" data-slider-step="1" data-slider-value="10"/><span id="timeWorkDayval" style="margin-left:20px;">10 h</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="modal-footer">
+        <!--<img src="img/favicon_devel_32x32.png" style="width:32px; height:32px; float:left;" alt ="Logo IGN"/>-->
+		<button class="btn btn-primary" data-dismiss="modal">Close</button>
+	</div>        
+    </div></div>
+</div>    
+    
+    
+    
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+<script src="vendor/jquery.min.js"></script>
+<!--<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>-->
+<script src="vendor/jquery-ui.js"></script>
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+<script src="vendor/bootstrap.min.js"></script>
+<script src="js/bootstrap-filestyle.min.js"></script><!--http://markusslima.github.io/bootstrap-filestyle/-->
+<script src="js/bootstrap-toggle.min.js"></script>
+<script src="js/bootstrap-slider.js"></script>
+<script src="js/gauge.min2.js"></script>
+<script src="config-gauges.js"></script>
+<script src="manage-gauges.js"></script>
+<!--<script src="//ru.smart-ip.net/canv-gauge/gauge.min.js"></script>-->
+    
+    <!--https://canvas-gauges.com/documentation/examples/-->
+    
+<script>
+	init_gauges();
+	//gauges_auto_on();
+	//getLog();
+	
+    var sliderVol = new Slider('#poolvol', {
+        formatter: function(value) {
+            $("#poolvolval").text(value + ' m3');
+            poolVolume=value;
+            evalMachine();
+            return 'Volumen: ' + value + ' m3';
+        }
+    });
+    $("#poolvol").on("slide", function(slideEvt) {
+            //$("#poolvolval").text(slideEvt.value + ' m3');
+            //poolVolume=slideEvt.value;
+            //evalMachine();
+    }); 
+
+    var sliderTime = new Slider('#timefilter', {
+        formatter: function(value) {
+            $("#timefilterval").text(value + ' h');
+            $("#paramTimeFilter").text(value);
+            timeFilter=value;
+            evalMachine();
+            return 'Filtration time: ' + value + ' h';
+        }
+    });
+
+    var sliderDayWorkTime = new Slider('#timeWorkDay', {
+        formatter: function(value) {
+            $("#timeWorkDayval").text(value + ' h');
+            $("#paramWorkHours").text(value);
+            timeDayWork=value;
+            evalMachine();
+            return 'Daily filtration hours: ' + value + ' h';
+        }
+    });    
+    
+    
+    
+    $('#optRepeat').bootstrapToggle('off');
+    $('#optTipoFileLOG').bootstrapToggle('off');
+    $('#optShowSaveAndValues').bootstrapToggle('off');
+    
+	input = document.getElementById("input");
+	function start() {
+	    add = setInterval("input.value++",1000);
+	}
+
+	function sleep(milliseconds) {
+	  var start = new Date().getTime();
+	  for (var i = 0; i < 1e7; i++) {
+	    if ((new Date().getTime() - start) > milliseconds){
+	      break;
+	    }
+	  }
+	}
+    
+    $(function() {
+        $('#optShowSaveAndValues').change(function() {
+                        if ($("#optShowSaveAndValues").prop('checked')==true){
+                            $("#panelAbs").hide();
+                            $("#panelDif").show();
+                        }else{
+                            $("#panelAbs").show();
+                            $("#panelDif").hide();
+                        }
+        })
+    });
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

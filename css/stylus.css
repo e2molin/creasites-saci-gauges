@@ -1,0 +1,87 @@
+body{
+	  padding:0;
+	  margin:0;
+	  background-image: url('../swimming-pool.jpg');
+	  background-position: center center;
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+	  /*background-size: cover;*/
+	  background-color:#ffffff;
+	}
+
+	@media only screen and (max-width: 767px) {
+	  body {
+	    background-size: cover;
+	  }
+	}
+	
+	.footer {
+	  position: absolute;
+	  padding-top: 7px;
+	  bottom: 0;
+	  color: #efefef;
+	  width: 100%;
+	  background-color: #111;
+	  /* Set the fixed height of the footer here */
+	  height: 40px;
+	}
+	.footer a{
+	  color: #efefef;
+	}	
+    
+.infoReference{
+    font-family: 'Futura','Trebuchet MS','Arial','sans-serif';
+    font-size: 20px;
+}
+.infoReference span{
+    font-family: 'Led', 'Arial', 'sans-serif';
+    font-size: 20px;
+    background-color: #bbbbb3;
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 3px 8px 6px 8px;/*Top-Right-Bottom-Left*/
+}
+.infoMachine{
+    font-family: 'Futura','Trebuchet MS','Arial','sans-serif';
+    font-size: 35px;
+    color:#FFFFFF;
+}
+.infoEnergy{
+    font-family: 'Futura','Trebuchet MS','Arial','sans-serif';
+    font-size: 25px;
+    /*font-weight: bold;*/
+}
+
+
+.ewinner-div{
+    padding:0px; 
+    margin-top:40px; 
+    background-color:rgba(13, 181, 221,0.15); 
+    /*
+    -webkit-box-shadow: 37px 1px 105px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 37px 1px 105px 3px rgba(0,0,0,0.75);
+    box-shadow: 37px 1px 105px 3px rgba(0,0,0,0.75);*/
+    -webkit-box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75); 
+    -moz-box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75); 
+    box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75);
+
+}
+
+.xwinner-div{
+    padding:0px; 
+    margin:0px; 
+    /*-webkit-box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75); 
+    -moz-box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75); 
+    box-shadow: -13px 14px 44px 0px rgba(0,0,0,0.75);*/
+-webkit-box-shadow: 47px 77px 65px -10px rgba(0,0,0,0.75);
+-moz-box-shadow: 47px 77px 65px -10px rgba(0,0,0,0.75);
+box-shadow: 47px 77px 65px -10px rgba(0,0,0,0.75);
+}
+
+.btn-success{
+        background-color: #82bf02;/*#5cb85c;*/
+        border-color: #4cae4c;
+}
+
+
+
