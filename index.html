@@ -21,8 +21,15 @@
                 <!--Barra superior de navegación-->
                 <div class="col-lg-2 col-md-2 col-sm-3" ><!--<div class="col-md-7 col-sm-6">-->
                         <p class="pull-left" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:25px;">
-                              <a id="btnShowConfig" class="btn btn-success" href="#" title="Configuration"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>
-                              <a id="btnFullScreen" class="btn btn-success" href="#" title="Fullscreen"><i class="fa fa-arrows-alt fa-lg" aria-hidden="true"></i></a>
+                            <!--<a id="btnShowConfig" class="btn btn-success" href="#" title="Configuration"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>-->
+                            <a id="btnFullScreen" class="btn btn-success" href="#" title="Fullscreen"><i class="fa fa-arrows-alt fa-lg" aria-hidden="true"></i></a>
+                            <a id="btnStartProcessFileContinuo" class="btn btn-success" >
+                                <i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> <!--Start monitor-->
+                            </a>
+                            <a id="btnSopProcessFileContinuo" class="btn btn-success" >
+                                <i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> <!--Stop monitor-->
+                            </a>
+
                         </p>                    
                     <!--
                     <img class="visible-lg" src="logo-saci.jpg" style="float:left;"/>
@@ -31,15 +38,10 @@
                     -->
                 </div>
                 <!--Iconos redes sociales-->
-                <div class="col-lg-10 col-md-10 col-sm-9" >
-                  <div class="col-md-9 col-sm-7 hidden-xs">
-                        <h1 class="visible-lg" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:25px;">
-                            <!--Monitorización de variables-->
-                        </h1>
-                        <h1 class="visible-md" style="margin-top: 20px; color:#222; font-weight:bold; font-size:1.70em; line-height:30px;">
-                           <!--Monitorización de variables-->
-                        </h1> 
-                  </div>
+                <div class="col-lg-5 col-md-10 col-sm-9" style="margin-top: 20px; color:#FFFFFF; font-weight:bold; font-size:1.70em; line-height:25px;" >
+                </div>
+                <div class="col-lg-5 col-md-10 col-sm-9" style="margin-top: 30px; margin-left: -60px; color:#FFFFFF; font-weight:bold; font-size:1.70em; line-height:25px;" >
+                    <input id="timefilter" name="timefilter" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="4" data-slider-max="8" data-slider-step="0.5" data-slider-step="0.1" data-slider-value="4"/><span id="timefilterval" style="margin-left:20px;">4 h</span>
                 </div>
             </div>
         </div>
@@ -323,16 +325,21 @@
                     <!--
                         Se monitoriza un fichero llamado <strong>logfile.txt</strong> que se encuentra en la misma ruta que el fichero <strong>index.html</strong>. Cuando se arranca la monitorización por primera vez comienza leyendo datos desde la primera línea. Una vez termina los datos en memoria, lo vuelve a leer y si hay más datos la monitorización continúa desde la última línea procesada. Si no hubiera datos nuevos se volverán a intentar leer en busca de nuevos datos cada 5 segundos.
                     -->
+                    <!--
                     <a id="btnStartProcessFileContinuo" class="btn btn-success" ><i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> Start monitor</a>
                     <a id="btnSopProcessFileContinuo" class="btn btn-success" ><i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> Stop monitor</a>
+                    -->
                     <input checked data-toggle="toggle" type="checkbox" data-on="Multiline LOG" data-off="Single line LOG" data-width="140" id="optTipoFileLOG">
                     <input checked data-toggle="toggle" type="checkbox" data-off="Show winner values" data-on="Show winner savings" data-width="160" id="optShowSaveAndValues">
                 </div>
                 <div class="tab-pane col-md-12" id="2a">
+                    <a id="btnTestSlider" class="btn btn-success" onclick="testSlider();"><i class="fa fa-cogs" aria-hidden="true"></i> Test</a>
                     <h3><small> Pool volumen m<sup>3</sup></small></h3>
                     <input id="poolvol" name="poolvol" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="40" data-slider-max="150" data-slider-step="1" data-slider-value="40"/><span id="poolvolval" style="margin-left:20px;">40 m3</span>
+                    <!--
                     <h3><small>Filtration time</small></h3>
-                    <input id="timefilter" name="timefilter" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="4" data-slider-max="6" data-slider-step="0.5" data-slider-step="0.1" data-slider-value="4"/><span id="timefilterval" style="margin-left:20px;">4 h</span>
+                    <input id="timefilter" name="timefilter" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="4" data-slider-max="8" data-slider-step="0.5" data-slider-step="0.1" data-slider-value="4"/><span id="timefilterval" style="margin-left:20px;">4 h</span>
+                    -->
                     <h3><small>Daily filtration hours</small></h3>
                     <input id="timeWorkDay" name="timeWorkDay" type="text" class="form-control" style="left: 0%; width: 75%;" value="10" data-slider-min="1" data-slider-max="24" data-slider-step="1" data-slider-step="1" data-slider-value="10"/><span id="timeWorkDayval" style="margin-left:20px;">10 h</span>
 
@@ -379,6 +386,7 @@
             return 'Volumen: ' + value + ' m3';
         }
     });
+    
     $("#poolvol").on("slide", function(slideEvt) {
             //$("#poolvolval").text(slideEvt.value + ' m3');
             //poolVolume=slideEvt.value;
@@ -425,6 +433,22 @@
 	  }
 	}
     
+
+function testSlider(){
+    //alert("Hola");
+    //var myChangeSlider = $("#timeWorkDay").bootstrapSlider();
+    sliderDayWorkTime.setValue(20);
+    //alert("Hola");
+    //$("#timeWorkDay").slider('setValue', 15);
+
+/*$('#timeWorkDay').slider({
+    value : 15
+});*/
+    //$("#timeWorkDay").slider('setValue', 20);
+
+}
+
+
     $(function() {
         $('#optShowSaveAndValues').change(function() {
                         if ($("#optShowSaveAndValues").prop('checked')==true){

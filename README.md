@@ -16,6 +16,7 @@ Monitorización de las variables de una depuradora **E-Winner**.
   - Monitorización de valores absolutos o de diferencias.
   - Lectura de las variables de un *single-line file*.
   - Lectura de las variables de un *multi-line file*.
+
 ## Recursos utilizados
 
 | Plugin | README |
@@ -42,3 +43,12 @@ Se necesita instalar un *Apache Web server*. No necesita conexión a internet, t
    [PlOd]: <https://github.com/Mikhus/canvas-gauges>
    [PlMe]: <https://github.com/getgauge-contrib/gauge-js>
 
+---
+
+#Versión 2.0 - Septiembre 2017
+
+* Si el fichero de LOG tiene 4 parámetros separados por punto y coma, funciona como antes. Si tiene 6, cambia los parámetros. Los nuevos parámetros son, en orden:
+-- Volumen de piscina en litros
+-- Horas de filtrado diarias en minutos. Para los cálculos se pasa el parámetro a horas.
+* Los botones de Start & Stop están en la pantalla, al lado del botón de fullscreen.
+* El slider de las horas de filtración lo he puesto en la parte superior derecha. Ahora se ha ampliado el rango hasta 8 horas

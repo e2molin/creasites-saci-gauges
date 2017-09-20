@@ -12,6 +12,9 @@ var poolVolume=40;
 var timeDayWork=10;
 var nombreMachine;
 
+
+
+
 function  evalMachine(){
     var cabal;
 
@@ -278,7 +281,7 @@ Función para monitorizar su fichero LOG con una línea de datos
 */
 function monitorizacionVariablesMono(){
     var numLinea;
-    var lines = null;   
+    var lines = null;
     $.ajax({
                     url: 'logfile.txt',
                     cache: false,
@@ -288,6 +291,8 @@ function monitorizacionVariablesMono(){
                             var partes;
                             var valores = [];
                             partes = resultsRequest.split(";");
+                            
+                            console.log("Valores presentes en log " + partes.length);
                             gauge1.setValue( partes[0]);
                             gaugeSav1.setValue(referenceGauge1-partes[0]);
                             gauge2.setValue( partes[1]/10);                         //Divido entre 10 porque me mandan bares en vez de m.c.a.
@@ -296,6 +301,31 @@ function monitorizacionVariablesMono(){
                             gaugeSav3.setValue(referenceGauge3-partes[2]);
                             gauge4.setValue( partes[3]);
                             gaugeSav4.setValue(referenceGauge4-partes[3]);
+
+                            //Si nosm mandan dos valores más
+                            if (partes.length==6){
+                                var reEvaluar=false;
+                                if (partes[4]!=poolVolume){
+                                    poolVolume= partes[4];
+                                    //sliderVol.setValue(parseInt(poolVolume));//Con esto cambiamos el slider de volumen
+                                    console.log("Cambio poolVolume");
+                                    reEvaluar=true;
+
+                                }
+                                if (partes[5]/60!= timeDayWork){
+                                    timeDayWork=  partes[5]/60;
+                                    //sliderDayWorkTime.setValue(timeDayWork);//Con esto cambiamos el slider de tiempo diario de filtrado
+                                    console.log("Cambio timeDayWork");
+                                    reEvaluar=true;
+                                }
+                                if (reEvaluar==true){
+                                    evalMachine();
+                                    console.log("El LOG reevalua valores");
+                                }else{
+                                    console.log("El LOG mantiene valores");
+                                }
+                            }
+
                             
                             var paramEnergy1=partes[0]/1000;
                             var valEnergy1=paramEnergy1*timeDayWork;
@@ -312,15 +342,15 @@ function monitorizacionVariablesMono(){
                             $("#numEnergy5").text(Math.round(valEnergy5*100)/100);
 
                         },
-                error: function(e){
-                console.log(e.responseText);
-                }
+                    error: function(e){
+                        console.log(e.responseText);
+                    }
                 });
 }
 
 function monitorizacionVariables(){
     var numLinea;
-    var lines = null;   
+    var lines = null;
     $.ajax({
                     url: 'logfile.txt',
                     cache: false,
@@ -411,8 +441,7 @@ $("#btnSopProcessFileContinuo").click(function() {
     clearInterval(ctrlLecturaLOG);
 });
 
+/*
 document.getElementById('fileBrowser').onchange = function(){
-    
-    
 };
-
+*/
