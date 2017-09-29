@@ -314,6 +314,7 @@ function monitorizacionVariablesMono(){
                                 }
                                 if (partes[5]/60!= timeDayWork){
                                     timeDayWork=  partes[5]/60;
+                                    $("#paramWorkHours").text(timeDayWork);
                                     //sliderDayWorkTime.setValue(timeDayWork);//Con esto cambiamos el slider de tiempo diario de filtrado
                                     console.log("Cambio timeDayWork");
                                     reEvaluar=true;
