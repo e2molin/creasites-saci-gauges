@@ -9,7 +9,7 @@ var readerTime=1000;
 
 var timeFilter=4;
 var poolVolume=40;
-var timeDayWork=10;
+var timeDayWork=0;
 var nombreMachine;
 
 
@@ -149,7 +149,7 @@ Rutinas proceso de ficheros LOG
 $("#btnStartProcessFile").click(function() {
     $("#modalConfiguration").modal("hide");
     $("#showOn").hide();
-    $("#showOff").hide();   
+    $("#showOff").hide();
   	var file4process = document.getElementById('fileBrowser').files[0];
   	var reader = new FileReader();
   	reader.onload = function(progressEvent){
@@ -214,7 +214,9 @@ $("#btnStartProcessFile").click(function() {
 $("#btnStopProcessFile").click(function() {
    $("#modalConfiguration").modal("hide");
     $("#showOn").hide();
-    $("#showOff").hide();    
+    $("#showOff").hide();
+    $("#btnStartProcessFile").removeClass("active");
+    $("#btnStopProcessFile").removeClass("active");    
     clearInterval(ctrlMonitorizacionLOG);
     monitorization=false;
 });
@@ -402,6 +404,9 @@ function monitorizacionVariables(){
 
 
 $("#btnStartProcessFileContinuo").click(function() {
+    //alert("Start");
+    console.log("Arranco proceso lectura LOG File");
+    $("#btnStartProcessFileContinuo").addClass("active");
     $("#modalConfiguration").modal("hide");
     lastValueShown=0;
     monitorizacionVariablesMono();
@@ -422,7 +427,11 @@ $("#btnStartProcessFileContinuo").click(function() {
     
 });
 
-$("#btnSopProcessFileContinuo").click(function() {
+$("#btnStopProcessFileContinuo").click(function() {
+    //alert("Stop");
+    console.log("Detengo proceso lectura LOG File");
+    $("#btnStopProcessFileContinuo").removeClass("active");
+    $("#btnStartProcessFileContinuo").removeClass("active");
     $("#modalConfiguration").modal("hide");
     //$("#showOn").hide();
     //$("#showOff").show();

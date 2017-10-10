@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Monitorización de variables</title>
+<title>Monitorización de variables SACI</title>
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!--<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">-->
@@ -24,13 +24,13 @@
                             <!--<a id="btnShowConfig" class="btn btn-success" href="#" title="Configuration"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></a>-->
                             <a id="btnFullScreen" class="btn btn-success" href="#" title="Fullscreen"><i class="fa fa-arrows-alt fa-lg" aria-hidden="true"></i></a>
                             <a id="btnStartProcessFileContinuo" class="btn btn-success" >
-                                <i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> <!--Start monitor-->
+                                <i class="fa fa-play-circle fa-lg" aria-hidden="true" title="Arranque de la monitorización"></i> <!--Start monitor-->
                             </a>
-                            <a id="btnSopProcessFileContinuo" class="btn btn-success" >
-                                <i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Procesar fichero"></i> <!--Stop monitor-->
+                            <a id="btnStopProcessFileContinuo" class="btn btn-success" >
+                                <i class="fa fa-stop-circle fa-lg" aria-hidden="true" title="Detención de la monitorización"></i> <!--Stop monitor-->
                             </a>
 
-                        </p>                    
+                        </p>
                     <!--
                     <img class="visible-lg" src="logo-saci.jpg" style="float:left;"/>
                     <img class="visible-md" src="logo-saci.jpg" style="float:left;"/>
@@ -49,7 +49,7 @@
 
 
 <div class="container-fluid">
-    
+
     <!--Indicadores E-winner-->
     <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:1px;">
         <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div col-centered">
@@ -100,19 +100,19 @@
                     <canvas id="gaugeWin4" style="margin-left:50px;"></canvas>
                 </div>
         </div>
-    </div>   
-    
-    
-    
-    
-    
+    </div>
+
+
+
+
+
     <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:-40px;">
         <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div col-centered">
                 <div class="panel-body col-centered" style="padding:0px; margin-left:80px;">
                     <p class="infoEnergy text-center">
                         <span id="paramEnergy1" style="font-size:20px;">PE1</span>
                         <span style="font-size:20px;"> x </span>
-                        <span id="paramWorkHours" style="font-size:20px;">10</span>
+                        <span id="paramWorkHours" style="font-size:20px;"></span>
                         <span style="font-size:20px;"> = </span>
                             <strong><span id="numEnergy1" style="font-size:35px; font-weight:bolder;">E1</span></strong>
                         <span style="font-size:20px;"> kWh/DAY</span>
@@ -124,11 +124,11 @@
                     <!--
                      <p class="infoReference text-center">
                         Power: <span id="ref1">0</span>
-                     </p>       
+                     </p>
                     -->
                 </div>
         </div>
-    </div>    
+    </div>
 
     <div class="col-sm-5 col-md-5 col-lg-5" style="margin-top:-40px;">
         <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div">
@@ -150,7 +150,7 @@
     </div>
 
 
-<!--Energy saving-->    
+<!--Energy saving-->
     <div class="col-sm-5 col-md-5 col-lg-5 col-sm-offset-3 col-md-offset-3 col-lg-offset-3" style="margin-top:-40px; margin-left:550px; ">
         <div class="panel panel-default col-sm-12 col-md-12 col-lg-12 ewinner-div" style="background-color:#272935;">
                 <div class="panel-body" style="padding:0px; margin-left:80px;  color:#b6c427;">
@@ -167,12 +167,12 @@
                      <p class="infoReference text-center">
                         Pressure: <span id="ref3">0</span>
                          Speed: <span id="ref4">0</span>
-                     </p> 
+                     </p>
 -->
                 </div>
         </div>
-    </div>    
-<!--    
+    </div>
+<!--
     <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" style="margin-top:40px; margin-left:200px;">
         <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
             <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
@@ -189,12 +189,12 @@
                     <canvas id="gauge-sav1" style="background-color:#adc706; margin-left:5px; width:90%;"></canvas>
             </div>
             <div class="panel-footer" style="background-color:#adc706;">
-      
+
             </div>
         </div>
     </div>
 -->
-<!--    
+<!--
 	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:40px;">
         <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
             <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
@@ -211,13 +211,13 @@
                     <canvas id="gauge-sav2" style="background-color:#adc706; margin-left:5px; width:90%;"></canvas>
             </div>
             <div class="panel-footer" style="background-color:#adc706;">
-          
+
             </div>
         </div>
     </div>
 -->
-    
-<!--    
+
+<!--
 	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-2 col-md-offset-2 col-lg-offset-2" style="margin-top:30px; margin-left:200px;">
         <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
             <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
@@ -234,12 +234,12 @@
                     <canvas id="gauge-sav3" style="background-color:#adc706; margin-left:25px; width:75%;"></canvas>
             </div>
             <div class="panel-footer" style="background-color:#adc706;">
-            
+
             </div>
         </div>
     </div>
--->    
-<!--    
+-->
+<!--
 	<div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1" style="margin-top:30px;">
         <div class="panel panel-default col-sm-6 col-md-6 col-lg-6 ewinner-div">
             <div class="panel-header" style="background-color:#272935; color:#b6c427;"><img class="img-responsive" src="img/e-winner-logo.png"/></div>
@@ -257,15 +257,15 @@
             </div>
             <div class="panel-footer" style="background-color:#adc706;">
                     <p class="infoMachine text-center">
-                        
+
                     </p>
                      <p class="infoReference text-center">
-                        
-                     </p>             
+
+                     </p>
             </div>
         </div>
     </div>
--->    
+-->
 
 
 
@@ -279,7 +279,7 @@
 <!--https://canvas-gauges.com/documentation/user-guide/-->
 </footer>
 
-    
+
 
 <div id="modalConfiguration" class="modal fade" role="dialog" >
     <div class="modal-dialog"><div class="modal-content">
@@ -295,8 +295,8 @@
                 </li>
                 <li><a href="#2a" data-toggle="tab">Settings</a>
                 </li>
-            </ul>            
-<hr/>            
+            </ul>
+<hr/>
             <div class="tab-content clearfix">
                 <div class="tab-pane active col-md-12" id="1a">
 <!--
@@ -320,7 +320,7 @@
                     <input checked data-toggle="toggle" type="checkbox" data-on="Repetir" data-off="No repetir" data-width="100" id="optRepeat">
                     <hr/>
                     -->
-                    
+
                     <h3><small>Monitor LOG file </small></h3>
                     <!--
                         Se monitoriza un fichero llamado <strong>logfile.txt</strong> que se encuentra en la misma ruta que el fichero <strong>index.html</strong>. Cuando se arranca la monitorización por primera vez comienza leyendo datos desde la primera línea. Una vez termina los datos en memoria, lo vuelve a leer y si hay más datos la monitorización continúa desde la última línea procesada. Si no hubiera datos nuevos se volverán a intentar leer en busca de nuevos datos cada 5 segundos.
@@ -341,7 +341,7 @@
                     <input id="timefilter" name="timefilter" type="text" class="form-control" style="left: 0%; width: 75%;" value="50" data-slider-min="4" data-slider-max="8" data-slider-step="0.5" data-slider-step="0.1" data-slider-value="4"/><span id="timefilterval" style="margin-left:20px;">4 h</span>
                     -->
                     <h3><small>Daily filtration hours</small></h3>
-                    <input id="timeWorkDay" name="timeWorkDay" type="text" class="form-control" style="left: 0%; width: 75%;" value="10" data-slider-min="1" data-slider-max="24" data-slider-step="1" data-slider-step="1" data-slider-value="10"/><span id="timeWorkDayval" style="margin-left:20px;">10 h</span>
+                    <input id="timeWorkDay" name="timeWorkDay" type="text" class="form-control" style="left: 0%; width: 75%;" value="0" data-slider-min="0" data-slider-max="24" data-slider-step="1" data-slider-step="1" data-slider-value="10"/><span id="timeWorkDayval" style="margin-left:20px;">0 h</span>
 
                 </div>
             </div>
@@ -350,12 +350,12 @@
 	<div class="modal-footer">
         <!--<img src="img/favicon_devel_32x32.png" style="width:32px; height:32px; float:left;" alt ="Logo IGN"/>-->
 		<button class="btn btn-primary" data-dismiss="modal">Close</button>
-	</div>        
+	</div>
     </div></div>
-</div>    
-    
-    
-    
+</div>
+
+
+
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <script src="vendor/jquery.min.js"></script>
@@ -370,14 +370,14 @@
 <script src="config-gauges.js"></script>
 <script src="manage-gauges.js"></script>
 <!--<script src="//ru.smart-ip.net/canv-gauge/gauge.min.js"></script>-->
-    
+
     <!--https://canvas-gauges.com/documentation/examples/-->
-    
+
 <script>
 	init_gauges();
 	//gauges_auto_on();
 	//getLog();
-	
+
     var sliderVol = new Slider('#poolvol', {
         formatter: function(value) {
             $("#poolvolval").text(value + ' m3');
@@ -386,12 +386,12 @@
             return 'Volumen: ' + value + ' m3';
         }
     });
-    
+
     $("#poolvol").on("slide", function(slideEvt) {
             //$("#poolvolval").text(slideEvt.value + ' m3');
             //poolVolume=slideEvt.value;
             //evalMachine();
-    }); 
+    });
 
     var sliderTime = new Slider('#timefilter', {
         formatter: function(value) {
@@ -411,14 +411,14 @@
             evalMachine();
             return 'Daily filtration hours: ' + value + ' h';
         }
-    });    
-    
-    
-    
+    });
+
+
+
     $('#optRepeat').bootstrapToggle('off');
     $('#optTipoFileLOG').bootstrapToggle('off');
     $('#optShowSaveAndValues').bootstrapToggle('off');
-    
+
 	input = document.getElementById("input");
 	function start() {
 	    add = setInterval("input.value++",1000);
@@ -432,7 +432,7 @@
 	    }
 	  }
 	}
-    
+
 
 function testSlider(){
     //alert("Hola");
